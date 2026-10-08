@@ -1,5 +1,5 @@
 // =============================================================
-//  Noeud SERVOMOTEUR (NODE_SERVO_STORE = 5) - Projet ecostore ENSIM
+//  Noeud SERVOMOTEUR (NODE_SERVOMOTEUR) - Projet ecostore ENSIM
 //  XBee PRO 802.15.4, mode transparent, 9600 bauds
 //
 //  Trame (4 octets), geree par la librairie FrameProtocol :
@@ -18,7 +18,7 @@
 #define DEBUG           1     // 1 = affiche tout sur le moniteur serie
 #define REPONSE_ACTIVE  1     // 0 si le Hub n'attend pas de reponse
 
-const uint8_t MON_ID       = NODE_SERVO_STORE;
+const uint8_t MON_ID       = NODE_SERVOMOTEUR;
 const uint8_t PIN_XBEE_RX  = 2;      // relie au DOUT du XBee
 const uint8_t PIN_XBEE_TX  = 3;      // relie au DIN du XBee
 const uint8_t PIN_SERVO    = 9;
@@ -116,7 +116,9 @@ void setup() {
   servo.attach(PIN_SERVO);
   servo.write(SERVO_ARRET);
 #if DEBUG
-  Serial.println(F("Servomoteur pret (ID 5)"));
+  Serial.print(F("Servomoteur pret (ID "));
+  Serial.print(MON_ID);
+  Serial.println(F(")"));
 #endif
 }
 
